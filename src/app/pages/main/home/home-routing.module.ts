@@ -21,10 +21,10 @@ const routes: Routes = [
     path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
     canActivate: [AuthGuard],
   },
-  // {
-  //   path: 'users-activities', loadChildren: () => import('./users/activities/activities.module').then(m => m.ActivitiesModule),
-  //   canActivate: [AuthGuard],
-  // },
+  {
+    path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

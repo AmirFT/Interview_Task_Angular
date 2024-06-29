@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { homeRoutingModule } from './home-routing.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -11,14 +12,10 @@ import { homeRoutingModule } from './home-routing.module';
   imports: [
     MatDialogModule,
     MatSnackBarModule,
-    // SharedModule,
+    DragDropModule,
     homeRoutingModule
   ],
   providers: [
-    // AlertService,
-    // FilterService,
-    // StaticService,
-    // ExcelService,
   ]
 })
 export class homeModule { }

@@ -11,17 +11,21 @@ export const navItems: NavItem[] = [
   },
 
   {
-    navCap: 'Users',
+    navCap: 'Employees',
   },
   {
     displayName: 'List',
     iconName: 'user-circle',
     route: '/panel/home/users',
   },
+
   {
-    displayName: 'Activities',
+    navCap: 'Tasks',
+  },
+  {
+    displayName: 'Tasks',
     iconName: 'git-merge',
-    route: '/panel/home/users/activities',
+    route: '/panel/home/tasks',
   },
   // {
   //   displayName: 'Calendar',
