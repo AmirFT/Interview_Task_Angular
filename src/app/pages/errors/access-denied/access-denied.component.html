@@ -1,0 +1,17 @@
+<div id="error" fxLayout="column" fxLayoutAlign="center center">
+
+  <div class="content" fxLayout="column" fxLayoutAlign="center center">
+
+    <div class="error-code mat-display-4">401</div>
+
+    <div class="message mat-headline secondary-text">Access Denied</div>
+
+    <div fxLayout="row" *ngIf="isAuthenticated">
+      <a mat-button color="accent" (click)="goBack()">Go back</a>
+      <a mat-button color="accent" (click)="goDashboard()">Go Home</a>
+    </div>
+    <a mat-button color="accent" *ngIf="!isAuthenticated" (click)="goSign()">Go to login</a>
+
+  </div>
+
+</div>

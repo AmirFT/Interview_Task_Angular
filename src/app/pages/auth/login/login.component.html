@@ -1,0 +1,62 @@
+<div class="blank-layout-container justify-content-center">
+  <div class="position-relative row w-100 h-100">
+    <div class="col-lg-7 col-xl-8 bg-gredient p-0">
+      <div class="p-24 h-100">
+        <!-- <a *ngIf="options.theme === 'light'">
+          <img src="./assets/images/logos/dark-logo.svg" class="align-middle m-2" alt="logo" />
+        </a>
+        <a *ngIf="options.theme === 'dark'">
+          <img src="./assets/images/logos/light-logo.svg" class="align-middle m-2" alt="logo" />
+        </a> -->
+
+        <div class="align-items-center justify-content-center img-height d-none d-lg-flex">
+          <img src="/assets/images/backgrounds/login-bg.svg" alt="login" style="max-width: 500px" />
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5 col-xl-4 p-0">
+      <div class="p-32 d-flex align-items-start align-items-lg-center justify-content-center h-100">
+        <div class="row justify-content-center w-100">
+          <div class="col-lg-9 max-width-form">
+            <h4 class="f-w-700 f-s-24 m-0">Welcome to Fathi Task_Angular</h4>
+            <span class="f-s-14 d-block mat-body-1 m-t-8">Amirmahdi Fathi</span>
+
+
+
+            <div class="or-border m-t-30">Sign in with</div>
+
+            <div class="bg-light-primary text-primary f-w-500 rounded p-16 m-t-24 text-center">
+              <span class="m-r-8">Task_Angular</span>
+            </div>
+
+            <form class="m-t-30">
+              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Email</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput [formControl]="username" id="username" inputmode="email" name="username"
+                  autocomplete="username" autofocus required />
+              </mat-form-field>
+
+              <!-- password -->
+              <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Password</mat-label>
+              <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput color="accent" id="password" type="password" name="password" [formControl]="password"
+                  autofocus>
+              </mat-form-field>
+
+              <div class="d-flex align-items-center m-b-12">
+                <a [routerLink]="['/']" class="text-primary f-w-600 text-decoration-none m-l-auto f-s-14">Forgot
+                  Password ?</a>
+              </div>
+              <button mat-flat-button color="primary" class="w-100" (click)="login()">
+                Sign In
+              </button>
+              <!-- input -->
+            </form>
+            <span class="d-block f-w-500 d-block m-t-24">*Only authorized personnel are allowed to access
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

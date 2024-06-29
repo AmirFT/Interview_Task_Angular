@@ -1,0 +1,18 @@
+<div id="isLoading" *ngIf="dataSourceLoading">
+    <ng-lottie [options]="optionsLoading"></ng-lottie>
+    <p class="secondary-text">
+        Loading...
+    </p>
+</div>
+<div id="isEmpty" *ngIf="!dataSourceLoading && dataSource.data.length === 0">
+    <ng-lottie [options]="optionsEmpty"></ng-lottie>
+    <p class="secondary-text">
+        Empty
+    </p>
+</div>
+<div id="notFound" *ngIf="dataSource.data.length > 0 && dataSource.filteredData.length === 0">
+    <ng-lottie [options]="optionsNotFound"></ng-lottie>
+    <p class="secondary-text">
+        Nothing found
+    </p>
+</div>

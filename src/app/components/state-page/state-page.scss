@@ -1,0 +1,34 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  align-items: center;
+  flex: 1 1 auto;
+  max-width: 100%;
+  max-height: 100%;
+
+  ng-lottie {
+    max-width: 260px;
+    max-height: 300px;
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  #isLoading {
+    p {
+      margin-top: -48px;
+    }
+  
+  }
+  #isEmpty {
+    p {
+      margin-top: -32px;
+    }
+  }
+}

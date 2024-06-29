@@ -1,0 +1,175 @@
+<mat-card class="cardWithShadow">
+  <mat-card-header>
+    <mat-card-title>Users</mat-card-title>
+    <mat-card-subtitle class="mat-body-1">List</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="m-t-30 table-responsive-sm">
+      <!-- <cdk-virtual-scroll-viewport [itemSize]="80" headerHeight="56" style="height: 100vh;"> -->
+      <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort>
+
+        <!-- UID Column -->
+        <ng-container matColumnDef="uid">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14" mat-sort-header>
+            ID
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            {{ element.uid }}
+          </td>
+        </ng-container>
+
+        <!-- firsName Column -->
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14" mat-sort-header>
+            FirstName
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            {{ element.firstName }}
+          </td>
+        </ng-container>
+
+        <!-- lastName Column -->
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14" mat-sort-header>
+            LastName
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            {{ element.lastName }}
+          </td>
+        </ng-container>
+
+        <!-- login Column -->
+        <ng-container matColumnDef="logins">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14" mat-sort-header>
+            Logins
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            {{ element.logins }}
+          </td>
+        </ng-container>
+
+        <!-- incomes Column -->
+        <ng-container matColumnDef="incomes">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14" mat-sort-header>
+            Incomes
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            {{ element.incomes }}
+          </td>
+        </ng-container>
+
+        <!-- expenses Column -->
+        <ng-container matColumnDef="expenses">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14" mat-sort-header>
+            Expenses
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            {{ element.expenses }}
+          </td>
+        </ng-container>
+
+        <!-- isApple Column -->
+        <ng-container matColumnDef="isApple">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14" mat-sort-header>
+            Apple Team User
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <ng-template [ngIf]="element.isApple == 'TRUE'">
+              <span class="bg-light-success text-success rounded f-w-600 p-6 p-y-4 f-s-12">
+                {{ element.isApple }}
+              </span>
+            </ng-template>
+            <ng-template [ngIf]="element.isApple != 'TRUE'">
+              <span class="bg-light-error text-error rounded f-w-600 p-6 p-y-4 f-s-12">
+                {{ element.isApple }}
+              </span>
+            </ng-template>
+          </td>
+        </ng-container>
+
+        <!-- registerDateTime Column -->
+        <ng-container matColumnDef="registerDateTime">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14" mat-sort-header>
+            Registration
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            {{ element.registerDateTime | toLocalDate }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="expand">
+          <th mat-header-cell *matHeaderCellDef aria-label="row actions">
+            &nbsp;
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button aria-label="expand row" (click)="
+                expandedElement = expandedElement === element ? null : element;
+                $event.stopPropagation()
+              ">
+              <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+              <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+        <ng-container matColumnDef="expandedDetail">
+          <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+            <div [@detailExpand]="
+                element === expandedElement ? 'expanded' : 'collapsed'">
+              <div class="p-15 rounded b-1 m-b-16 m-x-18">
+                <div class="d-flex align-items-center gap-12">
+                  <span
+                    class="bg-light-primary text-primary icon-48 rounded f-w-600 d-flex align-items-center justify-content-center"
+                    matTooltip="Logins">
+                    {{ element.logins }}
+                  </span>
+                  <span
+                    class="bg-light-success text-success icon-48 rounded f-w-600 d-flex align-items-center justify-content-center"
+                    matTooltip="Incomes">
+                    {{ element.incomes }}
+                  </span>
+                  <span
+                    class="bg-light-error text-error icon-48 rounded f-w-600 d-flex align-items-center justify-content-center"
+                    matTooltip="Expenses">
+                    {{ element.expenses }}
+                  </span>
+                  <div>
+                    <div class="f-s-14 f-w-600 mat-subtitle-1">
+                      {{ element.providerEmail }}
+                    </div>
+                    <div class="f-s-14">{{ element.userId }}</div>
+                  </div>
+                </div>
+                <div>
+
+                  <button mat-flat-button color="primary" class="d-block  m-t-32" (click)="showActivities(element)">
+                    Activities
+                  </button>
+                </div>
+                <div>
+                  <div class="f-s-14 f-w-600 mat-subtitle-1">
+                    {{ element.ip }}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand" class="example-element-row"
+          [class.example-expanded-row]="expandedElement === element" (click)="
+            expandedElement = expandedElement === element ? null : element
+          "></tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+      </table>
+
+      <app-state-page [dataSource]="dataSource" [dataSourceLoading]="dataSourceLoading"></app-state-page>
+      <!-- </cdk-virtual-scroll-viewport> -->
+
+    </div>
+  </mat-card-content>
+</mat-card>

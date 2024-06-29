@@ -1,0 +1,17 @@
+{
+  "debugging": true,
+  "apiEndpoint": {
+    "authApi": "https://localhost:5001",
+    "panelApi": "https://localhost:5001"
+  },
+  "authPath": {
+    "loginPath": "api/Account/Login",
+    "logoutPath": ""
+  },
+  "supportPath": {
+    "getUserMessages": "api/Support/List",
+    "sendUserMessage": "api/Support/Send"
+  },
+  "accessTokenObjectKey": "token",
+  "adminRoleName": "administrator"
+}

@@ -1,0 +1,56 @@
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+
+}
+
+// tr.example-element-row:not(.example-expanded-row):hover {
+//   background: whitesmoke;
+// }
+
+// tr.example-element-row:not(.example-expanded-row):active {
+//   background: #efefef;
+// }
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.mat-column-actionName {
+  max-width: 100px;
+  flex: 1;
+}
+
+.mat-column-typeName {
+  max-width: 100px;
+  flex: 0.6;
+}
+
+.mat-column-requestMethod {
+  max-width: 60px;
+  flex: 0.5;
+}
+
+.mat-column-duration {
+  max-width: 20px;
+  flex: 0.5;
+}
+
+.mat-column-created {
+  max-width: 100px;
+  flex: 0.5;
+}
+
+.mat-column-expand {
+  max-width: 10px;
+  flex: 0.2;
+}
+
+.json-container {
+  overflow-x: auto; /* Horizontal scrolling */
+  white-space: pre-wrap; /* Breaks lines as necessary */
+  word-wrap: break-word; /* Breaks long words */
+}
