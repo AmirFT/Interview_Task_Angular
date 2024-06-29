@@ -34,7 +34,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ListComponent implements OnInit {
 
   dataSource = new MatTableDataSource();
-  columnsToDisplay = ['uid', 'firstName', 'lastName', 'logins','incomes', 'expenses', 'isApple', 'registerDateTime'];
+  columnsToDisplay = ['Id', 'name', 'isManager'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement: IUserModel | null = null;
   @ViewChild(MatSort, { static: true }) sort: MatSort = Object.create(null);
