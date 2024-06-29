@@ -60,13 +60,7 @@ export class ListComponent implements OnInit {
 
   }
 
-  showActivities(user: IUserModel) {
-    //          this.onUsersChanged.next({ model: response, loading: false });
-    console.log(user)
-    this.usersService.setUserId(user.userId);
-    this.router.navigateByUrl('/panel/home/users/activities');
-
-  }
+  
 }
 
 

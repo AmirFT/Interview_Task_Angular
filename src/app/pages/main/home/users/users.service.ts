@@ -57,21 +57,7 @@ export class UsersService implements Resolve<any> {
       });
     }
 
-    loadUsersActivities(userId: string): Promise<boolean> {
-      if (userId == '') {
-        return
-      }
-      this.onUserActivitiesChanged.next({ model: this.userActivities, loading: true });
 
-      return new Promise((resolve, reject) => {
-        this.apiUsersService.getActivities({ userId: userId }).subscribe(
-          response => {
-            this.onUserActivitiesChanged.next({ model: response, loading: false });
-            resolve(true);
-          }, reject
-        );
-      });
-    }
 
   setUserId(userId: string) {
     this.userId = userId;

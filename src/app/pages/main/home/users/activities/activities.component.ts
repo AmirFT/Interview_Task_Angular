@@ -63,7 +63,7 @@ export class ActivitiesComponent implements OnInit {
     const model = this.usersService.onUserIdChanged.value ;
 
     this.search.setValue(model.model);
-    this.usersService.loadUsersActivities(model.model);
+    // this.usersService.loadUsersActivities(model.model);
 
 
 
@@ -75,7 +75,7 @@ export class ActivitiesComponent implements OnInit {
   }
 
   loadActivities(event: Event) {
-    this.usersService.loadUsersActivities((event.target as HTMLInputElement).value);
+    // this.usersService.loadUsersActivities((event.target as HTMLInputElement).value);
   }
 
   ngOnInit(): void {}

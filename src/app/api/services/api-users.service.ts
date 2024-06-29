@@ -15,18 +15,10 @@ export class ApiUsersService extends ApiBaseService {
 
   list(): Observable<IUserModel[]> {
     return this.http
-      .get(`${this.url}Users/List`)
+      .get(`${this.url}Employee/List`)
       .pipe(map((response: any) => {
         return response;
       }));
   }
 
-  getActivities(model: { userId: string }): Observable<IUserActivitiesModel[]> {
-    
-    return this.http
-      .post(`${this.url}Users/Activities`, model, { headers: this.headers })
-      .pipe(map((response: any) => {
-        return response;
-      }));
-  }
 }
