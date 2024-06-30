@@ -23,7 +23,6 @@ import { StatePageModule } from "app/components/state-page";
 import { MaterialModule } from "app/material.module";
 import { CommonModule } from "@angular/common";
 import { ListComponent } from "./list/list.component";
-import { ActivitiesComponent } from "./activities/activities.component";
 import { UsersService } from "./users.service";
 
 
@@ -32,10 +31,6 @@ const routes: Routes = [
     path: '',
     // redirectTo:'/panel/home/users/list',
     component: ListComponent,
-  },
-  {
-    path: 'activities',
-    component: ActivitiesComponent
   }
 ];
 
@@ -67,8 +62,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   declarations: [
-    ListComponent,
-    ActivitiesComponent
+    ListComponent
   ],
   providers: [
     UsersService

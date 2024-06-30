@@ -10,7 +10,7 @@ import { RedirectComponent } from './_redirect/redirect.component';
 const routes: Routes = [
   // Lazy async modules
   {
-    path: '', redirectTo: 'main', pathMatch: 'full'
+    path: '', redirectTo: 'home', pathMatch: 'full'
   },
   {
     path: 'home', loadChildren: () => import('./home/home.module').then(m => m.homeModule),

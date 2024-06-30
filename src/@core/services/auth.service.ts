@@ -70,7 +70,7 @@ export class AuthService {
   }
 
   isAuthUserLoggedIn(): boolean {
-    return this.tokenStoreService.hasStoredAccessToken() && !this.tokenStoreService.isAccessTokenExpired();
+    return this.tokenStoreService.hasStoredAccessToken();//&& !this.tokenStoreService.isAccessTokenExpired();
   }
 
   isAuthUserInRoles(requiredRoles: string[]): boolean {

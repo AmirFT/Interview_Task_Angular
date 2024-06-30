@@ -4,7 +4,7 @@ import { ApiBaseService } from './api-base.service';
 
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { IUserModel } from '../models';
+import { IEmployeeModel } from '../models';
 import { IUserActivitiesModel } from '../models/UserActivities';
 
 
@@ -13,7 +13,7 @@ export class ApiUsersService extends ApiBaseService {
 
 
 
-  list(): Observable<IUserModel[]> {
+  list(): Observable<IEmployeeModel[]> {
     return this.http
       .get(`${this.url}Employee/List`)
       .pipe(map((response: any) => {

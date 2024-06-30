@@ -1,26 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { IUserActivitiesModel, IUserModel } from 'app/api/models';
+import { IUserActivitiesModel, IEmployeeModel } from 'app/api/models';
 import { ApiUsersService } from 'app/api/services/api-users.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()
 export class UsersService implements Resolve<any> {
 
-  private userId = '';
-  private users: IUserModel[] = [];
-  private userActivities: IUserActivitiesModel[] = [];
-  onUsersChanged: BehaviorSubject<{ model: IUserModel[], loading: boolean }>;
-  onUserIdChanged: BehaviorSubject<{ model: string, loading: boolean }>;
-  onUserActivitiesChanged: BehaviorSubject<{ model: IUserActivitiesModel[], loading: boolean }>;
+  private employees: IEmployeeModel[] = [];
+  onEmployeeChanged: BehaviorSubject<{ model: IEmployeeModel[], loading: boolean }>;
 
 
   constructor(
     private apiUsersService: ApiUsersService,
   ) {
-    this.onUserIdChanged = new BehaviorSubject({ model: "", loading: true });
-    this.onUsersChanged = new BehaviorSubject({ model: [], loading: true });
-    this.onUserActivitiesChanged = new BehaviorSubject({ model: [], loading: false });
+    this.onEmployeeChanged = new BehaviorSubject({ model: [], loading: true });
 
   }
 
@@ -44,25 +38,19 @@ export class UsersService implements Resolve<any> {
   * load Build Status
   */
     loadUsers(): Promise<boolean> {
-      this.onUsersChanged.next({ model: this.users, loading: false });
+      this.onEmployeeChanged.next({ model: this.employees, loading: false });
 
       return new Promise((resolve, reject) => {
         this.apiUsersService.list().subscribe(
           response => {
-            this.users = response;
-            this.onUsersChanged.next({ model: response, loading: false });
+            this.employees = response;
+            this.onEmployeeChanged.next({ model: response, loading: false });
             resolve(true);
           }, reject
         );
       });
     }
 
-
-
-  setUserId(userId: string) {
-    this.userId = userId;
-    this.onUserIdChanged.next({ model: this.userId, loading: false });
-  }
 
 
 

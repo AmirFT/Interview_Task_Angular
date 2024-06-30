@@ -1,16 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
-import { IUserModel } from 'app/api/models';
-import { ApiUsersService } from 'app/api/services';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
 
@@ -19,48 +8,32 @@ import { MatTableDataSource } from '@angular/material/table';
   standalone: false,
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss',
-  animations: [
-    trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
-      state('expanded', style({ height: '*' })),
-      transition(
-        'expanded <=> collapsed',
-        animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
-      ),
-    ]),
-  ],
+  animations: []
 
 })
 export class ListComponent implements OnInit {
 
   dataSource = new MatTableDataSource();
-  columnsToDisplay = ['Id', 'name', 'isManager'];
-  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
-  expandedElement: IUserModel | null = null;
-  @ViewChild(MatSort, { static: true }) sort: MatSort = Object.create(null);
+  columnsToDisplay = ['id', 'name', 'isManager'];
   dataSourceLoading: boolean;
 
   constructor(
     private usersService: UsersService,
-    private router: Router,
-    private apiUsersService: ApiUsersService,
   ) {
-
-
-    this.usersService.onUsersChanged.subscribe(x => {
+    this.usersService.onEmployeeChanged.subscribe(x => {
+      console.log(x.model);  // Add this line to check the data
       this.dataSource.data = x.model;
-      this.dataSource.sort = this.sort;
-      this.dataSourceLoading = x.loading;
     })
 
     usersService.loadUsers();
 
   }
+
   ngOnInit(): void {
 
   }
 
-  
+
 }
 
 

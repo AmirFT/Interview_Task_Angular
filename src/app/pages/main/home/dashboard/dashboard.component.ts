@@ -17,19 +17,7 @@ import { DashboardService } from './dashboard.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [ TablerIconsModule,
-    AppTopCardsComponent,
-    AppRevenueUpdatesComponent,
-    AppYearlyBreakupComponent,
-    AppMonthlyEarningsComponent,
-    AppEmployeeSalaryComponent,
-    AppCustomersComponent,
-    AppProductsComponent,
-    AppSocialCardComponent,
-    AppSellingProductComponent,
-    AppWeeklyStatsComponent,
-    AppTopProjectsComponent,
-    AppProjectsComponent],
+  imports: [ TablerIconsModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -39,7 +27,6 @@ export class DashboardComponent implements OnInit {
     private dashboardService: DashboardService,
   ) {
 
-    dashboardService.loadSummaryStatus();
 
   }
 
