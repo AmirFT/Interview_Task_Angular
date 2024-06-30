@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { CdkDrag, CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TasksService } from './tasks.service';
-import { ITaskDetailModel } from 'app/api/models';
+import { IEmployeeModel, ITaskDetailModel } from 'app/api/models';
 import { MatDialog } from '@angular/material/dialog';
+import { AddTaskComponent } from './add-task/add-task.component';
+import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'app-tasks',
@@ -19,13 +21,23 @@ export class TasksComponent {
 
   bug: ITaskDetailModel[] = []
 
+  employee: IEmployeeModel[] = [];
+
 
 
   constructor(
     private tasksService: TasksService,
+    private usersService: UsersService,
     public dialog: MatDialog,
 
   ) {
+
+    this.usersService.onEmployeeChanged.subscribe(x => {
+      console.log(x.model);  // Add this line to check the data
+      this.employee = x.model;
+    })
+
+    usersService.loadUsers();
 
     this.tasksService.onTasksChanged.subscribe(x => {
       console.log(x.model);  // Add this line to check the data
@@ -44,23 +56,26 @@ export class TasksComponent {
       });
     })
 
-    tasksService.loadTasks();
+    this.loadTasks()
 
   }
 
+  loadTasks(userId: number = 0) {
+    this.tasksService.loadTasks(userId);
+  }
 
-  // openDialog(action: string, obj: any): void {
-  //   obj.action = action;
-  //   const dialogRef = this.dialog.open(AppContactDialogContentComponent, {
-  //     data: obj,
-  //   });
+  openDialog(action: string, obj: any): void {
+    obj.action = action;
+    const dialogRef = this.dialog.open(AddTaskComponent, {
+      data: obj,
+    });
 
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (result.event === 'Add') {
-  //       this.addContact(result.data);
-  //     }
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result.event === 'Add') {
+        // this.addContact(result.data);
+      }
+    });
+  }
 
 
   drop(event: CdkDragDrop<any[]>) {

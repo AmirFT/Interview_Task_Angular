@@ -12,9 +12,9 @@ export class ApiTaskService extends ApiBaseService {
 
 
 
-  list(): Observable<ITaskModel[]> {
+  list(userId: number): Observable<ITaskModel[]> {
     return this.http
-      .post(`${this.url}Task/List`, { UserId: 0 })
+      .post(`${this.url}Task/List`, { UserId: userId })
       .pipe(map((response: any) => {
         return response;
       }));
@@ -23,6 +23,14 @@ export class ApiTaskService extends ApiBaseService {
   updateStatus(id: number, status: number): Observable<any> {
     return this.http
       .put(`${this.url}Task/UpdateStatus`, { Status: status, Id: id })
+      .pipe(map((response: any) => {
+        return response;
+      }));
+  }
+
+  createTask(title: string, description: string, assignedUserId: number, priority: number): Observable<any> {
+    return this.http
+      .post(`${this.url}Task/Create`, { title, description, assignedUserId, priority }) //TODO::  ˝convert string number to number
       .pipe(map((response: any) => {
         return response;
       }));

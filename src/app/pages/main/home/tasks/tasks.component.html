@@ -3,6 +3,28 @@
     <mat-card-title>Tasks</mat-card-title>
     <mat-card-subtitle class="mat-body-1">Drag & Drop</mat-card-subtitle>
   </mat-card-header>
+  <mat-card class="cardWithShadow">
+    <mat-card-content>
+      <div class="row justify-content-between">
+        <div class="col-sm-4">
+          <mat-form-field appearance="outline" class="w-100 hide-hint">
+            <mat-label>Employees</mat-label>
+            <mat-select required [value]="1" (selectionChange)="loadTasks($event.value)">
+
+              <!-- </mat-select>(selectionChange)="ddlChange($event)"> -->
+              <mat-option value=0 selected>Everyone</mat-option>
+              <mat-option *ngFor="let item of employee" [value]="item.id">{{item.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-sm-8 text-end d-flex align-items-center justify-content-end">
+          <button mat-flat-button (click)="openDialog('Add', {})" color="primary">
+            Add Task
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
   <mat-card-content>
     <div class="table-responsive m-t-30">
 
@@ -17,7 +39,7 @@
             <span>{{item.description}}</span>
             <div class="employee-box">
               <span>{{ item.employee.name }}</span>
-              <span>{{ item.priority }}</span>
+              <span>Priority: {{ item.priority }}</span>
             </div>
           </div>
         </div>
@@ -33,7 +55,7 @@
             <span>{{item.description}}</span>
             <div class="employee-box">
               <span>{{ item.employee.name }}</span>
-              <span>{{ item.priority }}</span>
+              <span>Priority: {{ item.priority }}</span>
             </div>
           </div>
         </div>
@@ -49,7 +71,7 @@
             <span>{{item.description}}</span>
             <div class="employee-box">
               <span>{{ item.employee.name }}</span>
-              <span>{{ item.priority }}</span>
+              <span>Priority: {{ item.priority }}</span>
             </div>
           </div>
         </div>
@@ -65,7 +87,7 @@
             <span>{{item.description}}</span>
             <div class="employee-box">
               <span>{{ item.employee.name }}</span>
-              <span>{{ item.priority }}</span>
+              <span>Priority: {{ item.priority }}</span>
             </div>
           </div>
         </div>
