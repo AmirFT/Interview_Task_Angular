@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { homeRoutingModule } from './home-routing.module';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -12,7 +11,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
   imports: [
     MatDialogModule,
     MatSnackBarModule,
-    DragDropModule,
     homeRoutingModule
   ],
   providers: [

@@ -1,1 +1,76 @@
-<p>tasks works!</p>
+<mat-card class="cardWithShadow">
+  <mat-card-header class="d-flex">
+    <mat-card-title>Tasks</mat-card-title>
+    <mat-card-subtitle class="mat-body-1">Drag & Drop</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="table-responsive m-t-30">
+
+
+      <div class="example-container">
+        <h2>To do</h2>
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+          [cdkDropListConnectedTo]="[doingList, doneList, bugList]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let item of bug" class="example-box" cdkDrag [cdkDragData]="item">
+            <h2>{{item.title}}</h2>
+            <span>{{item.description}}</span>
+            <div class="employee-box">
+              <span>{{ item.employee.name }}</span>
+              <span>{{ item.priority }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-container">
+        <h2>Doing</h2>
+        <div cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing"
+          [cdkDropListConnectedTo]="[todoList, doneList, bugList]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let item of bug" class="example-box" cdkDrag [cdkDragData]="item">
+            <h2>{{item.title}}</h2>
+            <span>{{item.description}}</span>
+            <div class="employee-box">
+              <span>{{ item.employee.name }}</span>
+              <span>{{ item.priority }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-container">
+        <h2>Done</h2>
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[todoList, doingList, bugList]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let item of bug" class="example-box" cdkDrag [cdkDragData]="item">
+            <h2>{{item.title}}</h2>
+            <span>{{item.description}}</span>
+            <div class="employee-box">
+              <span>{{ item.employee.name }}</span>
+              <span>{{ item.priority }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-container">
+        <h2>BUG</h2>
+        <div cdkDropList #bugList="cdkDropList" [cdkDropListData]="bug"
+          [cdkDropListConnectedTo]="[todoList, doingList, doneList]" class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div *ngFor="let item of bug" class="example-box" cdkDrag [cdkDragData]="item">
+            <h2>{{item.title}}</h2>
+            <span>{{item.description}}</span>
+            <div class="employee-box">
+              <span>{{ item.employee.name }}</span>
+              <span>{{ item.priority }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </mat-card-content>
+</mat-card>

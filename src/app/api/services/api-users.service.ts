@@ -5,7 +5,6 @@ import { ApiBaseService } from './api-base.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IEmployeeModel } from '../models';
-import { IUserActivitiesModel } from '../models/UserActivities';
 
 
 @Injectable()

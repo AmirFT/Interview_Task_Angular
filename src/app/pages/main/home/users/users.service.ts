@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { IUserActivitiesModel, IEmployeeModel } from 'app/api/models';
+import { IEmployeeModel } from 'app/api/models';
 import { ApiUsersService } from 'app/api/services/api-users.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 

@@ -24,6 +24,7 @@ import { MaterialModule } from "app/material.module";
 import { CommonModule } from "@angular/common";
 import { TasksComponent } from "./tasks.component";
 import { TasksService } from "./tasks.service";
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
     ScrollingModule,
     MatIconModule,
     MatMenuModule,
+    DragDropModule,
     MatListModule,
     MatInputModule,
     MatTableModule,
