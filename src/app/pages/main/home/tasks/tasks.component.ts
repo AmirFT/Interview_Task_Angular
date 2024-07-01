@@ -19,7 +19,7 @@ export class TasksComponent {
   doing: ITaskDetailModel[] = []
   done: ITaskDetailModel[] = []
 
-  bug: ITaskDetailModel[] = []
+  justCreated: ITaskDetailModel[] = []
 
   employee: IEmployeeModel[] = [];
 
@@ -40,12 +40,14 @@ export class TasksComponent {
     usersService.loadUsers();
 
     this.tasksService.onTasksChanged.subscribe(x => {
-      console.log(x.model);  // Add this line to check the data
-      // this.dataSource.data = x.model;
 
+      this.justCreated = [];
+      this.todo = [];
+      this.doing = [];
+      this.done = [];
       x.model.forEach(e => {
         if (e.status == 0) {
-          this.bug = e.details
+          this.justCreated = e.details
         } else if (e.status == 1) {
           this.todo = e.details
         } else if (e.status == 2) {
@@ -103,7 +105,7 @@ export class TasksComponent {
         return 2;
       case 'doneList':
         return 3;
-      case 'bugList':
+      case 'justCreatedList':
         return 0;
       default:
         return 0;

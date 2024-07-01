@@ -32,9 +32,9 @@
       <div class="example-container">
         <h2>To do</h2>
         <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
-          [cdkDropListConnectedTo]="[doingList, doneList, bugList]" class="example-list"
+          [cdkDropListConnectedTo]="[doingList, doneList, justCreatedList]" class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div *ngFor="let item of bug" class="example-box" cdkDrag [cdkDragData]="item">
+          <div *ngFor="let item of todo" class="example-box" cdkDrag [cdkDragData]="item">
             <h2>{{item.title}}</h2>
             <span>{{item.description}}</span>
             <div class="employee-box">
@@ -48,9 +48,9 @@
       <div class="example-container">
         <h2>Doing</h2>
         <div cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing"
-          [cdkDropListConnectedTo]="[todoList, doneList, bugList]" class="example-list"
+          [cdkDropListConnectedTo]="[todoList, doneList, justCreatedList]" class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div *ngFor="let item of bug" class="example-box" cdkDrag [cdkDragData]="item">
+          <div *ngFor="let item of doing" class="example-box" cdkDrag [cdkDragData]="item">
             <h2>{{item.title}}</h2>
             <span>{{item.description}}</span>
             <div class="employee-box">
@@ -64,9 +64,9 @@
       <div class="example-container">
         <h2>Done</h2>
         <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
-          [cdkDropListConnectedTo]="[todoList, doingList, bugList]" class="example-list"
+          [cdkDropListConnectedTo]="[todoList, doingList, justCreatedList]" class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div *ngFor="let item of bug" class="example-box" cdkDrag [cdkDragData]="item">
+          <div *ngFor="let item of done" class="example-box" cdkDrag [cdkDragData]="item">
             <h2>{{item.title}}</h2>
             <span>{{item.description}}</span>
             <div class="employee-box">
@@ -78,11 +78,11 @@
       </div>
 
       <div class="example-container">
-        <h2>BUG</h2>
-        <div cdkDropList #bugList="cdkDropList" [cdkDropListData]="bug"
+        <h2>NEW</h2>
+        <div cdkDropList #justCreatedList="cdkDropList" [cdkDropListData]="justCreated"
           [cdkDropListConnectedTo]="[todoList, doingList, doneList]" class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div *ngFor="let item of bug" class="example-box" cdkDrag [cdkDragData]="item">
+          <div *ngFor="let item of justCreated" class="example-box" cdkDrag [cdkDragData]="item">
             <h2>{{item.title}}</h2>
             <span>{{item.description}}</span>
             <div class="employee-box">

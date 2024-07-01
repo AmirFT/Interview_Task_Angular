@@ -30,7 +30,7 @@ export class ApiTaskService extends ApiBaseService {
 
   createTask(title: string, description: string, assignedUserId: number, priority: number): Observable<any> {
     return this.http
-      .post(`${this.url}Task/Create`, { title, description, assignedUserId, priority }) //TODO::  ˝convert string number to number
+      .post(`${this.url}Task/Create`, { title, description, assignedUserId, priority })
       .pipe(map((response: any) => {
         return response;
       }));

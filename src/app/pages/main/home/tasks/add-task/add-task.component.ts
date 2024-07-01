@@ -39,7 +39,7 @@ export class AddTaskComponent {
 
   doAction(): void {
     // this.dialogRef.close({ event: this.action, data: this.local_data });
-    this.tasksService.createTask(this.local_data.title, this.local_data.description, this.local_data.assignedUserId, this.local_data.priority).then(() => {
+    this.tasksService.createTask(this.local_data.title, this.local_data.description, parseInt(this.local_data.assignedUserId), parseInt(this.local_data.priority)).then(() => {
       this.dialogRef.close();
     }, error => {
       this.dialogRef.close();
