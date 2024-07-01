@@ -35,4 +35,15 @@ export class ApiTaskService extends ApiBaseService {
         return response;
       }));
   }
+
+  updateTask(title: string, description: string, assignedUserId: number, priority: number, id: number): Observable<any> {
+    return this.http
+      .put(`${this.url}Task/Update`, { title, description, assignedUserId, priority, id })
+      .pipe(map((response: any) => {
+        return response;
+      }));
+  }
+
 }
+
+

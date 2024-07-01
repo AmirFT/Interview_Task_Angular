@@ -18,7 +18,7 @@
           </mat-form-field>
         </div>
         <div class="col-sm-8 text-end d-flex align-items-center justify-content-end">
-          <button mat-flat-button (click)="openDialog('Add', {})" color="primary">
+          <button mat-flat-button (click)="openDialog('create', {}, null)" color="primary">
             Add Task
           </button>
         </div>
@@ -31,10 +31,11 @@
 
       <div class="example-container">
         <h2>To do</h2>
-        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
+        <div cdkDropList id="todoList" #todoList="cdkDropList" [cdkDropListData]="todo"
           [cdkDropListConnectedTo]="[doingList, doneList, justCreatedList]" class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div *ngFor="let item of todo" class="example-box" cdkDrag [cdkDragData]="item">
+          <div *ngFor="let item of todo" class="example-box" cdkDrag [cdkDragData]="item"
+            (click)="openDialog('update',{},item)">
             <h2>{{item.title}}</h2>
             <span>{{item.description}}</span>
             <div class="employee-box">
@@ -47,10 +48,11 @@
 
       <div class="example-container">
         <h2>Doing</h2>
-        <div cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing"
+        <div cdkDropList id="doingList" #doingList="cdkDropList" [cdkDropListData]="doing"
           [cdkDropListConnectedTo]="[todoList, doneList, justCreatedList]" class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div *ngFor="let item of doing" class="example-box" cdkDrag [cdkDragData]="item">
+          <div *ngFor="let item of doing" class="example-box" cdkDrag [cdkDragData]="item"
+            (click)="openDialog('update',{},item)">
             <h2>{{item.title}}</h2>
             <span>{{item.description}}</span>
             <div class="employee-box">
@@ -63,10 +65,11 @@
 
       <div class="example-container">
         <h2>Done</h2>
-        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+        <div cdkDropList id="doneList" #doneList="cdkDropList" [cdkDropListData]="done"
           [cdkDropListConnectedTo]="[todoList, doingList, justCreatedList]" class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div *ngFor="let item of done" class="example-box" cdkDrag [cdkDragData]="item">
+          <div *ngFor="let item of done" class="example-box" cdkDrag [cdkDragData]="item"
+            (click)="openDialog('update',{},item)">
             <h2>{{item.title}}</h2>
             <span>{{item.description}}</span>
             <div class="employee-box">
@@ -79,10 +82,11 @@
 
       <div class="example-container">
         <h2>NEW</h2>
-        <div cdkDropList #justCreatedList="cdkDropList" [cdkDropListData]="justCreated"
+        <div cdkDropList id="justCreatedList" #justCreatedList="cdkDropList" [cdkDropListData]="justCreated"
           [cdkDropListConnectedTo]="[todoList, doingList, doneList]" class="example-list"
           (cdkDropListDropped)="drop($event)">
-          <div *ngFor="let item of justCreated" class="example-box" cdkDrag [cdkDragData]="item">
+          <div *ngFor="let item of justCreated" class="example-box" cdkDrag [cdkDragData]="item"
+            (click)="openDialog('update',{},item)" A>
             <h2>{{item.title}}</h2>
             <span>{{item.description}}</span>
             <div class="employee-box">

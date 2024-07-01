@@ -22,7 +22,10 @@ export class AddTaskComponent {
     private usersService: UsersService,
     private tasksService: TasksService,
     // @Optional() is used to prevent error if no data is passed
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: ITaskModel
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: {
+      value: ITaskModel,
+      action: 'create' | 'update'
+    }
   ) {
     // console.log(data);
     this.local_data = { ...data };
@@ -37,13 +40,22 @@ export class AddTaskComponent {
 
   }
 
-  doAction(): void {
-    // this.dialogRef.close({ event: this.action, data: this.local_data });
-    this.tasksService.createTask(this.local_data.title, this.local_data.description, parseInt(this.local_data.assignedUserId), parseInt(this.local_data.priority)).then(() => {
-      this.dialogRef.close();
-    }, error => {
-      this.dialogRef.close();
-    });
+  doAction(isUpdate: boolean): void {
+    if (isUpdate) {
+      this.tasksService.updateTask(this.local_data.title, this.local_data.description, parseInt(this.local_data.assignedUserId), parseInt(this.local_data.priority),parseInt(this.local_data.id)).then(() => {
+        this.dialogRef.close();
+      }, error => {
+        this.dialogRef.close();
+      });
+    }
+    else {
+      this.tasksService.createTask(this.local_data.title, this.local_data.description, parseInt(this.local_data.assignedUserId), parseInt(this.local_data.priority)).then(() => {
+        this.dialogRef.close();
+      }, error => {
+        this.dialogRef.close();
+      });
+    }
+
   }
 
   closeDialog(): void {

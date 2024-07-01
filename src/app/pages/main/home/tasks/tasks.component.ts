@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CdkDrag, CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TasksService } from './tasks.service';
-import { IEmployeeModel, ITaskDetailModel } from 'app/api/models';
+import { IEmployeeModel, ITaskDetailModel, ITaskModel } from 'app/api/models';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { UsersService } from '../users/users.service';
@@ -18,8 +18,8 @@ export class TasksComponent {
   todo: ITaskDetailModel[] = []
   doing: ITaskDetailModel[] = []
   done: ITaskDetailModel[] = []
-
   justCreated: ITaskDetailModel[] = []
+  allTask: ITaskModel[] = []
 
   employee: IEmployeeModel[] = [];
 
@@ -45,6 +45,7 @@ export class TasksComponent {
       this.todo = [];
       this.doing = [];
       this.done = [];
+      this.allTask = x.model;
       x.model.forEach(e => {
         if (e.status == 0) {
           this.justCreated = e.details
@@ -66,17 +67,19 @@ export class TasksComponent {
     this.tasksService.loadTasks(userId);
   }
 
-  openDialog(action: string, obj: any): void {
+  openDialog(action: string, obj: any, task: ITaskDetailModel): void {
     obj.action = action;
+    obj.value = task;
+    // taskId == null ? null : this.allTask.find(f => {
+    //   f.details.forEach(element => {
+    //     element.id == taskId
+    //   });
+    // })
+
     const dialogRef = this.dialog.open(AddTaskComponent, {
       data: obj,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result.event === 'Add') {
-        // this.addContact(result.data);
-      }
-    });
   }
 
 
@@ -93,6 +96,7 @@ export class TasksComponent {
 
       // Send the update to the API
       const newStatus = this.getStatusFromContainerId(currentContainer.id);
+      debugger
       this.tasksService.changeStatus(item.id, newStatus);
     }
   }

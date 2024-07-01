@@ -98,4 +98,17 @@ export class TasksService implements Resolve<any> {
       );
     });
   }
+
+  updateTask(title: string, description: string, assignedUserId: number, priority: number, id: number): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.apiTaskService.updateTask(title, description, assignedUserId, priority,id).subscribe(
+        (event: HttpEvent<any>) => {
+          if (event.type === HttpEventType.Response) {
+            this.loadTasks(0);
+            resolve(true);
+          }
+        }, reject
+      );
+    });
+  }
 }
