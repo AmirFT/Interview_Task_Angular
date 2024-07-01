@@ -96,7 +96,6 @@ export class TasksComponent {
 
       // Send the update to the API
       const newStatus = this.getStatusFromContainerId(currentContainer.id);
-      debugger
       this.tasksService.changeStatus(item.id, newStatus);
     }
   }

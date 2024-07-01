@@ -23,14 +23,15 @@ export class AddTaskComponent {
     private tasksService: TasksService,
     // @Optional() is used to prevent error if no data is passed
     @Optional() @Inject(MAT_DIALOG_DATA) public data: {
-      value: ITaskModel,
+      value: any,
       action: 'create' | 'update'
     }
   ) {
     // console.log(data);
-    this.local_data = { ...data };
-    this.action = this.local_data.action;
-
+    this.local_data = { ...data.value };
+    this.action = data.action;
+    debugger
+    console.warn(this.local_data.priority);
     this.usersService.onEmployeeChanged.subscribe(x => {
       console.log(x.model);  // Add this line to check the data
       this.employees = x.model;
